@@ -133,4 +133,4 @@ zomato_kolkata.csv: The raw 7,388-record dataset.
 - **GitHub**: (https://github.com/akashpshaw524)
 - **LinkedIn**: (https://www.linkedin.com/in/akashshaw524/)
 - **Email**: akash.pshaw524@gmail.com
-
+📍 Kolkata, India · Open to remote and relocation
