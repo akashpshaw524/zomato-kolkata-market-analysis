@@ -52,25 +52,48 @@ zomato_kolkata.csv: The raw 7,388-record dataset.
 ## 🔍 Key Analyses (💎 The "Alpha" Insights What I Found)
 
 
-### 1. **Rating Distribution Analysis**
-- **Finding**: Market dominated by mid-tier restaurants (3.0-3.5 rating)
-- **Insight**: High-quality restaurants (4.5+) are underrepresented — opportunity for premium positioning
+### 1. **Data Quality & Cleaning (The Heavy Lifting - Before and After Comparision )
 
-### 2. **Cost vs Quality Relationship**
-- **Finding**: Budget restaurants (₹<300) compete equally with premium ones
-- **Insight**: Price doesn't guarantee satisfaction — quality matters more
+**Challenge:** Raw CSV had 7,388 inconsistent records
+- Vote counts stored as "12404 votes" (text contamination)
+- Costs as "₹1,000" (currency symbols + commas)  
+- Ratings included "NEW" / "-" placeholders (284 missing values, 3.84%)
 
-### 3. **Cuisine Market Trends**
-- **Finding**: North Indian dominates with 480+ restaurants; Pizza is under-served
-- **Insight**: Market concentration opportunity in emerging cuisines
+**Solution:** Built robust cleaning pipeline with Pandas
+- Extracted numbers from text using `.str.extract()` and `pd.to_numeric()`
+- Removed currency symbols and standardized numeric types
+- Handled missing values strategically (drop vs fill based on context)
+
+**Result:** 7,388 analysis-ready records with 0% data quality issues
+![Before and After Comparision](output/screenshot/Comparision_Before_After_Analysis.PNG)
+
+
+
+### 2.💎 The "Quality-Price" Paradox (Alpha Insight!)
+- **Finding**: Budget restaurants (₹<300) compete almost equally with premium ones
+- **Insight**: ✅ Budget segment can compete on quality (not just price)  
+               ✅ Premium pricing requires SIGNIFICANT differentiation  
+               ✅ Sweet spot: "Premium quality at budget price" = Blue Ocean
+  
+  ![Price-Quality Relationshio](output/screenshot/Price_Quality_Paradox.PNG)
+  
+
+### 3. **Top Cuisines Analysis** (What Kolkata Loves to Eat)
+- **Finding**: Chinese and North India dominates 76% of market
+- **Insight**: Emerging cuisines (Italian, Pizza, Thai, Fusion) severely under-served  
+→ First-mover advantage for specialized cuisine players.
+
+  ![Kolkata Loves to Eat](output/screenshot/Top_cuisines.PNG)
 
 ### 4. **Hidden Gems Discovery**
-- **Finding**: 143 excellent restaurants (4.3+ rating) with <500 votes
+- **Finding**: 36 excellent restaurants (top 20% by rating and bottom 30% by votes)
 - **Insight**: High-quality restaurants need marketing awareness
+![Hidden Gems By Top Ratings and Low Votes](output/screenshot/Hidden_gems.PNG)
 
 ### 5. **Best Value Restaurants**
 - **Finding**: 55 restaurants offer exceptional rating-per-rupee scores
 - **Insight**: Value proposition trumps expensive positioning
+- ![Best Value](output/screenshot/Best_rating_per_rupee_restaurants.PNG)
 
 ### 6. **NumPy Statistical Deep Dive**
 - Mean rating: 3.39 | Median: 3.4 | Std Dev: 0.41
@@ -82,7 +105,17 @@ zomato_kolkata.csv: The raw 7,388-record dataset.
 - **Mid-Range (₹300-₹800)**: 42.9% — stable middle class
 - **Premium (₹800-₹1,500)**: 4.4% — niche luxury segment
 - **Luxury (>₹1,500)**: 1.2% — ultra-premium outliers
+- ![Market Segmentation](output/screenshot/Market_segmentation_by_budget.PNG)
 
+### 8. **Customer Engagement Patterns**
+**Finding** - Vote Count Distribution (Customer Engagement):
+- Mean votes: 155
+- Median votes: 34
+- Max votes: 12,404 (Peter Cat restaurant)
+- 59 "Super Popular" restaurants (>2,000 votes)
+- 3,772 "Niche" restaurants (<100 votes)
+- **Insight** : Engagement is HIGHLY skewed. Few restaurants dominate customer attention. Massive concentration at the top
+![Customer Engagement](output/screenshot/Customer_highest_lowest_engagement.PNG)
 ---
 
 ## 🛠 Technical Skills Demonstrated
@@ -134,3 +167,5 @@ zomato_kolkata.csv: The raw 7,388-record dataset.
 - **LinkedIn**: (https://www.linkedin.com/in/akashshaw524/)
 - **Email**: akash.pshaw524@gmail.com
 📍 Kolkata, India · Open to remote and relocation
+
+
